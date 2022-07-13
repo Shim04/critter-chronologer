@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Person {
+public class User {
     @Id
     @GeneratedValue
     private Long id;

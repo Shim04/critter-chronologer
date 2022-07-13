@@ -7,7 +7,7 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
-public class Customer extends Person{
+public class Customer extends User {
     private String phoneNumber;
 
     private String notes;
