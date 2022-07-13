@@ -1,6 +1,8 @@
 package com.udacity.jdnd.course3.critter.user;
 
+import com.udacity.jdnd.course3.critter.entity.Customer;
 import com.udacity.jdnd.course3.critter.entity.Employee;
+import com.udacity.jdnd.course3.critter.service.CustomerService;
 import com.udacity.jdnd.course3.critter.service.EmployeeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
@@ -21,23 +23,29 @@ import java.util.Set;
 @RequestMapping("/user")
 public class UserController {
     private EmployeeService employeeService;
+    private CustomerService customerService;
 
-    public UserController(EmployeeService employeeService) {
+    public UserController(EmployeeService employeeService, CustomerService customerService) {
         this.employeeService = employeeService;
+        this.customerService = customerService;
     }
 
     @PostMapping("/customer")
     public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO){
-        throw new UnsupportedOperationException();
+        return convertCustomerToCustomerDTO(customerService.saveCustomer(convertCustomerDTOToCustomer(customerDTO)));
     }
 
     @GetMapping("/customer")
     public List<CustomerDTO> getAllCustomers(){
-        throw new UnsupportedOperationException();
+        List<Customer> customers = customerService.getAllCustomers();
+        List<CustomerDTO> res = new ArrayList<>();
+        customers.forEach(customer -> res.add(convertCustomerToCustomerDTO(customer)));
+        return res;
     }
 
     @GetMapping("/customer/pet/{petId}")
     public CustomerDTO getOwnerByPet(@PathVariable long petId){
+        // TODO: PetService
         throw new UnsupportedOperationException();
     }
 
@@ -66,6 +74,24 @@ public class UserController {
             res.add(convertEmployeeToEmployeeDTO(employee));
         }
         return res;
+    }
+
+    private static CustomerDTO convertCustomerToCustomerDTO(Customer customer) {
+        CustomerDTO customerDTO = new CustomerDTO();
+        BeanUtils.copyProperties(customer, customerDTO);
+        List<Long> petIds = new ArrayList<>();
+        if(customer.getPets() != null) {
+            customer.getPets().forEach(pet -> petIds.add(pet.getId()));
+        }
+        customerDTO.setPetIds(petIds);
+        return customerDTO;
+    }
+
+    private static Customer convertCustomerDTOToCustomer(CustomerDTO customerDTO) {
+        Customer customer = new Customer();
+        BeanUtils.copyProperties(customerDTO, customer);
+        // TODO: PetService
+        return customer;
     }
 
     private static EmployeeDTO convertEmployeeToEmployeeDTO(Employee employee) {
