@@ -4,6 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,7 +14,11 @@ public class Customer extends User {
     private String notes;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<Pet> pets;
+    private List<Pet> pets = new ArrayList<>();
+
+    public void addPet(Pet pet) {
+        pets.add(pet);
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;
