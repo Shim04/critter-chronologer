@@ -1,6 +1,6 @@
-# Critter Chronologer Project Starter
+# Critter Chronologer
 
-Critter Chronologer a Software as a Service application that provides a scheduling interface for a small business that takes care of animals. This Spring Boot project will allow users to create pets, owners, and employees, and then schedule events for employees to provide services for pets.
+Critter Chronologer is a Software as a Service application that provides a scheduling interface for a small business that takes care of animals. This Spring Boot project will allow users to create pets, owners, and employees, and then schedule events for employees to provide services for pets.
 
 
 ## Getting Started
@@ -13,13 +13,9 @@ Critter Chronologer a Software as a Service application that provides a scheduli
 * [MySQL Server 8](https://dev.mysql.com/downloads/mysql/) (or another standalone SQL instance)
 * [Postman](https://www.getpostman.com/downloads/)
 
-Part of this project involves configuring a Spring application to connect to an external data source. Before beginning this project, you must install a database to connect to. Here are [instructions for installing MySQL 8](https://dev.mysql.com/doc/refman/8.0/en/installing.html).
+Part of this project involves configuring a Spring application to connect to an external data source. Before beginning this project, you must install a database to connect to. This project uses MySQL database as data source.
 
-You should install the Server and Connector/J, but it is also convenient to install the Documentation and Workbench.
-
-Alternately, you may wish to run MySQL in a docker container, using [these instructions](https://hub.docker.com/_/mysql/).
-
-After installing the Server, you will need to create a user that your application will use to perform operations on the server. You should create a user that has all permissions on localhost using the sql command found [here](https://dev.mysql.com/doc/refman/8.0/en/creating-accounts.html).
+After installing the Server, you will need to create a user that your application will use to perform operations on the server. You should create a user that has all permissions on localhost using the sql command found.
 
 Another SQL database may be used if desired, but do not use the H2 in-memory database as your primary datasource.
 
@@ -36,14 +32,12 @@ You should see the message "Critter Starter installed successfully" in your brow
 
 ## Testing
 
-Once you have completed the above installation, you should also be able to run the included unit tests to verify basic functionality as you complete it. To run unit tests:
+Once you have completed the above installation, you should also be able to run the included unit tests to verify basic functionality. To run unit tests:
 
 1. Within your project in IDEA, Navigate to `src/test/java/com.udacity.jdnd.course3.critter`.
 2. Within that directory, click on `CritterFunctionalTest.java` and select `Run` -> `Run CritterFunctionalTest`.
 
-A window should open showing you the test executions. All 9 tests should fail and if you click on them they will show `java.lang.UnsupportedOperationeException` as the cause.
-
-As you complete the objectives of this project, you will be able to verify progress by re-running these tests.
+A window should open showing you the test executions. 
 
 ### Tested Conditions
 Tests will pass under the following conditions:
@@ -53,7 +47,7 @@ Tests will pass under the following conditions:
 * `testAddPetsToCustomer` - **PetController.getPetsByOwner** returns a saved pet with the same id and name as the one saved with **UserController.savePet** for a given owner
 * `testFindPetsByOwner` - **PetController.getPetsByOwner** returns all pets saved for that owner.
 * `testFindOwnerByPet` - **UserController.getOwnerByPet** returns the saved owner used to create the pet.
-* `testChangeEmployeeAvailability` - **UserController.getEmployee** returns an employee with the same availability as set for that employee by **UserControler.setAvailability**
+* `testChangeEmployeeAvailability` - **UserController.getEmployee** returns an employee with the same availability as set for that employee by **UserController.setAvailability**
 * `testFindEmployeesByServiceAndTime` - **UserController.findEmployeesForService** returns all saved employees that have the requested availability and skills and none that do not
 * `testSchedulePetsForServiceWithEmployee` - **ScheduleController.createSchedule** returns a saved schedule matching the requested activities, pets, employees, and date
 * `testFindScheduleByEntities` - **ScheduleController.getScheduleForEmployee** returns all saved schedules containing that employee. **ScheduleController.getScheduleForPet** returns all saved schedules for that pet. **ScheduleController.getScheduleForCustomer** returns all saved schedules for any pets belonging to that owner.

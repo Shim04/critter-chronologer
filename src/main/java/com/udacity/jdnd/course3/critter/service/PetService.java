@@ -22,6 +22,8 @@ public class PetService {
         this.customerRepository = customerRepository;
     }
 
+    // https://knowledge.udacity.com/questions/562817
+    // update save method to sync customer and pet
     public Pet savePet(Pet pet) {
         Pet savedPet = petRepository.save(pet);
         Customer customer = savedPet.getCustomer();
