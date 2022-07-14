@@ -5,17 +5,18 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import java.time.DayOfWeek;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Employee extends User {
     @ElementCollection
     @Enumerated(EnumType.STRING)
-    private Set<EmployeeSkill> skills;
+    private Set<EmployeeSkill> skills = new HashSet<>();
 
     @ElementCollection
     @Enumerated(EnumType.STRING)
-    private Set<DayOfWeek> daysAvailable;
+    private Set<DayOfWeek> daysAvailable = new HashSet<>();
 
     public Set<EmployeeSkill> getSkills() {
         return skills;

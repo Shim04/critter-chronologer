@@ -62,7 +62,10 @@ public class PetController {
 
     private List<PetDTO> convertPetListToPetDTOList(List<Pet> pets) {
         List<PetDTO> res = new ArrayList<>();
-        pets.forEach(pet -> res.add(convertPetToPetDTO(pet)));
+        for(Pet pet : pets) {
+            res.add(convertPetToPetDTO(pet));
+        }
+        // pets.forEach(pet -> res.add(convertPetToPetDTO(pet)));
         return res;
     }
 }

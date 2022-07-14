@@ -10,7 +10,6 @@ import java.util.List;
 @Entity
 public class Customer extends User {
     private String phoneNumber;
-
     private String notes;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL)
