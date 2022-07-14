@@ -3,8 +3,7 @@ package com.udacity.jdnd.course3.critter.service;
 import com.udacity.jdnd.course3.critter.entity.Employee;
 import com.udacity.jdnd.course3.critter.exception.EmployeeNotFoundException;
 import com.udacity.jdnd.course3.critter.repository.EmployeeRepository;
-import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.udacity.jdnd.course3.critter.entity.EmployeeSkill;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
