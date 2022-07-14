@@ -15,10 +15,6 @@ public class Customer extends User {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Pet> pets = new ArrayList<>();
 
-    public void addPet(Pet pet) {
-        pets.add(pet);
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }

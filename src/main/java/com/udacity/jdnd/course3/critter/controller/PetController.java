@@ -56,16 +56,14 @@ public class PetController {
     private Pet convertPetDTOToPet(PetDTO petDTO) {
         Pet pet = new Pet();
         BeanUtils.copyProperties(petDTO, pet);
-        pet.setCustomer(customerService.findCustomerById(petDTO.getOwnerId()));
+        Customer customer = customerService.findCustomerById(petDTO.getOwnerId());
+        pet.setCustomer(customer);
         return pet;
     }
 
     private List<PetDTO> convertPetListToPetDTOList(List<Pet> pets) {
         List<PetDTO> res = new ArrayList<>();
-        for(Pet pet : pets) {
-            res.add(convertPetToPetDTO(pet));
-        }
-        // pets.forEach(pet -> res.add(convertPetToPetDTO(pet)));
+        pets.forEach(pet -> res.add(convertPetToPetDTO(pet)));
         return res;
     }
 }
