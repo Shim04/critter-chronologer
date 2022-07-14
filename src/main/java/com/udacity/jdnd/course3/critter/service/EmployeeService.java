@@ -48,7 +48,7 @@ public class EmployeeService {
 
     public List<Employee> findEmployeesForService(LocalDate localDate, Set<EmployeeSkill> skills) {
         List<Employee> employeesWithSkills = new ArrayList<>();
-        List<Employee> employeesAvailable = employeeRepository.findEmployeeByDaysAvailable(localDate.getDayOfWeek());
+        List<Employee> employeesAvailable = employeeRepository.findEmployeesByDaysAvailable(localDate.getDayOfWeek());
         employeesAvailable.forEach(employee -> {
             boolean containsSkills = employee.getSkills().containsAll(skills);
             if(containsSkills) {
